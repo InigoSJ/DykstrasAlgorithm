@@ -49,8 +49,7 @@ function [X] = DykstraTOL(A,L,U,P,eps,TOL,max)
         i=i+1;
 
     end
-    
-    X=Av(:,:,4);
+    X=Av(:,:,7);
     i+2
     tol0
     toc
