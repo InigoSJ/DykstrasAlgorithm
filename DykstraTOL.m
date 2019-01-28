@@ -2,20 +2,22 @@
 % A = matrix to aproximate
 
 % L & U = Lower and Upper bound matrix. Comparison element to element
-%P = matrix of matrices in which each matrix is a symmetric matrix 
+% P = matrix of matrices in which each matrix is a symmetric matrix 
 % representing the pattern
 % eps = epsilon
 % TOL = tolerance adited
 % max = maximum iterations allowed
 function [X] = DykstraTOL(A,L,U,P,eps,TOL,max)
+
+    addpath('Conditions')
     tic
     format long
     n=length(A(1,:));
     % not E dependant
     Av(:,:,1)=A; %A0
-    Av(:,:,2)=ConLU(A,L,U);
-    Av(:,:,3)=ConPat(Av(:,:,2),P);
-    Av(:,:,4)=ConDef(Av(:,:,3),eps); %A3
+    Av(:,:,2)=ConditionLU(A,L,U);
+    Av(:,:,3)=ConditionPattern(Av(:,:,2),P);
+    Av(:,:,4)=ConditionPositiveDef(Av(:,:,3),eps); %A3
 
     zero=zeros(n,n);
     Ev(:,:,1)=zero; %E -2

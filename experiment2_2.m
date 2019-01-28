@@ -1,1 +1,0 @@
-[A,L,U,P]=DatosExp2(100);
